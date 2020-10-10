@@ -25,7 +25,6 @@ public:
 
 	// Initialization:
 	StandardDeck();
-	StandardDeck(const PlayingCard& card);
 
 
 	// Rule of three:
@@ -44,8 +43,8 @@ public:
 	// Mutators:
 	virtual void initialize();
 	void SetDeck();
-	std::string DrawNextCard();
-	std::string DrawRandomCard();
+	PlayingCard DrawNextCard();
+	PlayingCard DrawRandomCard();
 	void Shuffle();
 	void SetCard(PlayingCard newCard);
 

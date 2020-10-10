@@ -1,14 +1,17 @@
 #include "StandardDeck.h"
 
+
+
+//StandardDeck::StandardDeck(const PlayingCard* sum_card =0)
+//{
+//	StandardDeck::initialize();
+//}
+
 StandardDeck::StandardDeck() :m_card(PlayingCard())
 {
 	StandardDeck::initialize();
 }
 
-StandardDeck::StandardDeck(const PlayingCard& card)
-{
-	StandardDeck::initialize();
-}
 
 StandardDeck::~StandardDeck()
 = default;
@@ -35,18 +38,38 @@ void StandardDeck::SetCard(const PlayingCard newCard)
 }
 
 
-//int StandardDeck::CardsRemaining() const
-//{
-//}
+int StandardDeck::CardsRemaining() const
+{
+	const int remainingCards = m_deck.size();
+	return remainingCards;
+
+}
 
 
-//std::string StandardDeck::DrawNextCard()
-//{
-//}
+PlayingCard StandardDeck::DrawNextCard()
+{
+	PlayingCard currentCard = m_deck[0];
+	for (int i = 0; i < m_deck.size()-1; i++)
+	{
+		m_deck[i] = m_deck[i + 1];
+	}
+	m_deck.pop_back();
+	return currentCard;
+	
+}
 
-//std::string StandardDeck::DrawRandomCard()
-//{
-//}
+PlayingCard StandardDeck::DrawRandomCard()
+{
+	int cardSelected = (rand() % m_deck.size());
+
+	PlayingCard currentCard = m_deck[cardSelected];
+	for (int i = cardSelected; i < m_deck.size() - 1; i++)
+	{
+		m_deck[i] = m_deck[i + 1];
+	}
+	m_deck.pop_back();
+	return currentCard;
+}
 
 //void StandardDeck::Shuffle()
 //{
@@ -57,7 +80,7 @@ void StandardDeck::initialize()
 	const int num = 52;
 	int cardRankIndex = 1;
 	int cardSuitIndex = 0;
-
+	
 	for (int cardValue = 0; cardValue < num; cardValue++)
 	{
 		PlayingCard currentCard =  PlayingCard(cardRankIndex, cardSuitIndex, cardValue, true);

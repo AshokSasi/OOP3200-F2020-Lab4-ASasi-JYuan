@@ -13,17 +13,28 @@ int main()
 	srand(time(nullptr)); // seed the random number generator
 
 	// create a deck
-	const StandardDeck deck1;
+	 StandardDeck deck1;
 
-	for (int i=0; i < 52; i++)
+	for (int i=0; i < deck1.GetDeck().size(); i++)
 	{
 		std::cout << std::string(deck1.GetDeck()[i]) << std::endl;
 	}
-
+	std::cout << "There are " << deck1.CardsRemaining() << " cards remaining.";
+	Pause();
+	
+	std::cout << std::string(deck1.DrawNextCard()) << std::endl;
+	
+	std::cout <<"There are " <<  deck1.CardsRemaining() << " cards remaining.";
 	// PlayingCard.std::string(deck1.GetDeck()[0]);
 	// Show the deck object as initialized
 	Pause();
 	
+	std::cout << std::string(deck1.DrawRandomCard()) << std::endl;
+	for (int i = 0; i < deck1.GetDeck().size(); i++)
+	{
+		std::cout << std::string(deck1.GetDeck()[i]) << std::endl;
+	}
+	std::cout << "There are " << deck1.CardsRemaining() << " cards remaining.";
 	// Draw the next card and show it
 
 	// Draw a random card and show it
