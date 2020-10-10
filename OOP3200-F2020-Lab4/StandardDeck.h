@@ -49,6 +49,7 @@ public:
 	void SetCard(PlayingCard newCard);
 	void ResetDeck();
 
+//private data members	
 private:
 	PlayingCard m_card;
 	std::vector<PlayingCard> m_deck;
