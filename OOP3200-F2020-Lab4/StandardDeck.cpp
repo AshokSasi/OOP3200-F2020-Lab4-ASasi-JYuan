@@ -71,9 +71,14 @@ PlayingCard StandardDeck::DrawRandomCard()
 	return currentCard;
 }
 
-//void StandardDeck::Shuffle()
-//{
-//}
+void StandardDeck::Shuffle()
+{
+	for(int i =0; i < m_deck.size()-1; i++)
+	{
+		int j = i + rand() % (m_deck.size() - i);
+		std::swap(m_deck[i], m_deck[j]);
+	}
+}
 
 void StandardDeck::initialize()
 {
