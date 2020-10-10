@@ -42,16 +42,17 @@ public:
 
 	// Mutators:
 	virtual void initialize();
-	void SetDeck();
+	void ClearDeck();
 	PlayingCard DrawNextCard();
 	PlayingCard DrawRandomCard();
 	void Shuffle();
 	void SetCard(PlayingCard newCard);
+	void ResetDeck();
 
 private:
 	PlayingCard m_card;
 	std::vector<PlayingCard> m_deck;
-
+	int* m_pointer = 0;
 
 };
 

@@ -2,13 +2,9 @@
 
 
 
-//StandardDeck::StandardDeck(const PlayingCard* sum_card =0)
-//{
-//	StandardDeck::initialize();
-//}
-
 StandardDeck::StandardDeck() :m_card(PlayingCard())
 {
+	m_pointer = 0;
 	StandardDeck::initialize();
 }
 
@@ -35,6 +31,11 @@ std::vector<PlayingCard> StandardDeck::GetDeck() const
 void StandardDeck::SetCard(const PlayingCard newCard)
 {
 	m_card = newCard;
+}
+
+void StandardDeck::ResetDeck()
+{
+	initialize();
 }
 
 
@@ -85,11 +86,15 @@ void StandardDeck::initialize()
 	const int num = 52;
 	int cardRankIndex = 1;
 	int cardSuitIndex = 0;
-	
+	if (m_pointer != 0)
+	{
+		ClearDeck();
+	}
 	for (int cardValue = 0; cardValue < num; cardValue++)
 	{
-		PlayingCard currentCard =  PlayingCard(cardRankIndex, cardSuitIndex, cardValue, true);
+		PlayingCard currentCard = PlayingCard(cardRankIndex, cardSuitIndex, cardValue, true);
 		m_deck.push_back(currentCard);
+		m_pointer = &cardValue;
 
 		if (cardSuitIndex == 3)
 		{
@@ -101,21 +106,12 @@ void StandardDeck::initialize()
 			cardSuitIndex++;
 		}
 	}
-
+	
 }
 
-void StandardDeck::SetDeck()
+void StandardDeck::ClearDeck()
 {
-	initialize();
+	m_deck.clear();
 }
 
-//std::string StandardDeck::ToString() const
-//{
-//	std::string output_string;
-//	for (int i = 0, i < 52, i++)
-//	{
-//		output_string += "card" + i + " " + std::string(Getdeck(i)) + "/n";
-//	}
-//	return output_string;
-//}
 
