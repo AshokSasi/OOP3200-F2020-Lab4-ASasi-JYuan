@@ -33,8 +33,6 @@ int main()
 	
 	
 	
-	
-	// PlayingCard.std::string(deck1.GetDeck()[0]);
 	// Show the deck object as initialized
 
 	
@@ -57,15 +55,17 @@ int main()
 	std::cout << "\nSHUFFLE DECK" << std::endl;
 	deck1.Shuffle();
 	DisplayDeck(deck1);
-	/*for (int i = 0; i < deck1.GetDeck().size(); i++)
-	{
-		std::cout << std::string(deck1.GetDeck()[i]) << std::endl;
-	}*/
+
 	// Reset the deck and show the result
-	//Pause();
-	//std::cout << "\n\n\nRESET DECK" << std::endl;
-	//deck1.initialize();
-	//DisplayDeck(deck1);
+	Pause();
+
+	std::cout << "\n\n\nRESET DECK" << std::endl;
+	
+	deck1.initialize();
+	
+
+	std::cout << "There are " << deck1.CardsRemaining() << " cards remaining." << std::endl;
+	DisplayDeck(deck1);
 }	
 
 

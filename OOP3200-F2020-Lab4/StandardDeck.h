@@ -42,7 +42,7 @@ public:
 
 	// Mutators:
 	virtual void initialize();
-	void SetDeck();
+	void ClearDeck();
 	PlayingCard DrawNextCard();
 	PlayingCard DrawRandomCard();
 	void Shuffle();

@@ -48,12 +48,13 @@ int StandardDeck::CardsRemaining() const
 
 PlayingCard StandardDeck::DrawNextCard()
 {
-	PlayingCard currentCard = m_deck[0];
+	PlayingCard currentCard = m_deck.front();
 	for (int i = 0; i < m_deck.size()-1; i++)
 	{
 		m_deck[i] = m_deck[i + 1];
 	}
 	m_deck.pop_back();
+	
 	return currentCard;
 	
 }
@@ -85,7 +86,8 @@ void StandardDeck::initialize()
 	const int num = 52;
 	int cardRankIndex = 1;
 	int cardSuitIndex = 0;
-	
+
+	ClearDeck();
 	for (int cardValue = 0; cardValue < num; cardValue++)
 	{
 		PlayingCard currentCard =  PlayingCard(cardRankIndex, cardSuitIndex, cardValue, true);
@@ -104,9 +106,10 @@ void StandardDeck::initialize()
 
 }
 
-void StandardDeck::SetDeck()
+void StandardDeck::ClearDeck()
 {
-	initialize();
+	m_deck.clear();
+	
 }
 
 //std::string StandardDeck::ToString() const
